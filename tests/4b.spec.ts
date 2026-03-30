@@ -129,3 +129,17 @@ test('user can cancel checkout', async ({ page }) => {
   await expect(page).toHaveURL("https://www.saucedemo.com/cart.html");
 } 
 );
+
+// Test 9: Check the case where the user logs out 
+test('user can log out successfully', async ({ page }) => {
+  await page.goto(BASE_URL);
+  
+  await page.getByPlaceholder('Username').fill(USERNAME);
+  await page.getByPlaceholder('Password').fill(PASSWORD);
+  await page.getByRole('button', { name: 'Login' }).click();
+  
+  await page.getByRole('button', { name: 'Open Menu' }).click();
+  await page.locator('#logout_sidebar_link').click();
+  
+  await expect(page).toHaveURL(BASE_URL);
+});
