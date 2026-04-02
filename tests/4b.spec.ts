@@ -19,8 +19,8 @@ test('valid login leads to inventory page', async ({ page }) => {
 test('invalid login shows error message', async ({ page }) => {
   await page.goto(BASE_URL);
 
-  await page.getByPlaceholder('Username').fill('wrong');
-  await page.getByPlaceholder('Password').fill('wrong');
+  await page.getByPlaceholder('Username').fill('3s03');
+  await page.getByPlaceholder('Password').fill('student');
   await page.getByRole('button', { name: 'Login' }).click();
 
   await expect(page.locator('.error-message-container')).toBeVisible();
